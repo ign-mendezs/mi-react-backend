@@ -14,7 +14,7 @@ const seedTestUsers = async () => {
 
     // Crear el usuario con rol de admin
     const hashedPassword = await bcrypt.hash('password', 10);
-    const [adminUser, createdAdmin] = await User.findOrCreate({
+    const [adminUser] = await User.findOrCreate({
         where: { email: 'admin@test.com' },
         defaults: {
           name: 'Administrador de Prueba',
@@ -25,7 +25,7 @@ const seedTestUsers = async () => {
     await adminUser.addRole(adminRole);
 
     // Crear el usuario con rol de user
-    const [standardUser, createdUser] = await User.findOrCreate({
+    const [standardUser] = await User.findOrCreate({
         where: { email: 'user@test.com' },
         defaults: {
           name: 'Usuario de Prueba',

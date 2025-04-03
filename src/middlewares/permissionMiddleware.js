@@ -16,7 +16,7 @@ const permissionMiddleware = (permission) => {
       if (!hasPermission) {
         return res.status(403).json({ error: "No tienes permiso para realizar esta acción" });
       }
-      next();
+      return next();
     } catch (error) {
       console.error("Error en permissionMiddleware:", error);
       return res.status(500).json({ error: "Error interno del servidor" });

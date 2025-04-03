@@ -6,7 +6,7 @@ const { Role, Permission } = require('../models'); // Importa los modelos ya def
 const seedDefaultData = async () => {
   try {
     // Crear o buscar el rol 'admin'
-    const [adminRole, createdAdmin] = await Role.findOrCreate({
+    const [adminRole] = await Role.findOrCreate({
       where: { name: 'admin' },
       defaults: {
         description: 'Administrador del sistema'
@@ -14,7 +14,7 @@ const seedDefaultData = async () => {
     });
 
     // Crear o buscar el rol 'user'
-    const [userRole, createdUser] = await Role.findOrCreate({
+    const [userRole] = await Role.findOrCreate({
       where: { name: 'user' },
       defaults: {
         description: 'Usuario estándar'
@@ -30,7 +30,7 @@ const seedDefaultData = async () => {
 
     // Insertar permisos y asociarlos
     for (const permData of defaultPermissions) {
-      const [permission, createdPerm] = await Permission.findOrCreate({
+      const [permission] = await Permission.findOrCreate({
         where: { name: permData.name },
         defaults: { description: permData.description }
       });
