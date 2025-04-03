@@ -34,10 +34,10 @@ const authenticateUser = (req, res, next) => {
     // Asigna el usuario decodificado a la solicitud para acceso en rutas protegidas
     req.user = decoded;
 
-    return next();
+    next();
   } catch (error) {
     console.error("Error en autenticación:", error);
-    return res.status(403).json({ error: "Token inválido" });
+    res.status(403).json({ error: "Token inválido" });
   }
 };
 

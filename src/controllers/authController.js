@@ -21,10 +21,10 @@ const register = async (req, res) => {
       await newUser.addRole(defaultRole);
     }
     // Envía respuesta exitosa con código 201.
-    return res.status(201).json({ message: "Usuario registrado correctamente" });
+    res.status(201).json({ message: "Usuario registrado correctamente" });
   } catch (error) {
     // Retorna error 500 si ocurre algún fallo en el registro.
-    return res.status(500).json({ error: "Error al registrar usuario" });
+    res.status(500).json({ error: "Error al registrar usuario" });
   }
 };
 
@@ -50,10 +50,10 @@ const login = async (req, res) => {
     const token = generateToken(user);
 
     // Envía el token en la respuesta.
-    return res.json({ token });
+    res.json({ token });
   } catch (error) {
     // Retorna error 500 si ocurre algún fallo en el login.
-    return res.status(500).json({ error: "Error al iniciar sesión" });
+    res.status(500).json({ error: "Error al iniciar sesión" });
   }
 };
 

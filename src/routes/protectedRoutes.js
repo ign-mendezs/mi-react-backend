@@ -8,7 +8,7 @@ const { authenticateUser } = require('../middlewares/authMiddleware');
 const permissionMiddleware = require('../middlewares/permissionMiddleware');
 
 // Ruta para eliminar un usuario (requiere el permiso 'delete_user')
-router.delete('/users/:id', authenticateUser, permissionMiddleware('delete_user'), (req, res) => {
+router.delete('/users/:id', authenticateUser, permissionMiddleware('delete_user'), async (req, res) => {
   // Aquí implementarías la lógica para eliminar el usuario (por ejemplo, llamando a un controlador)
   res.json({ message: "Usuario eliminado" });
 });
