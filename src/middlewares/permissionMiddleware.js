@@ -19,7 +19,7 @@ const permissionMiddleware = (permission) => {
       return next();
     } catch (error) {
       console.error("Error en permissionMiddleware:", error);
-      res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
   };
 };
